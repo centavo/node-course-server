@@ -2,11 +2,12 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+//heroku will use PORT, but if running locally will use 3000
+const port = process.env.PORT || 3000;
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
-
 
 app.use((req, res, next) => {
   var now = new Date().toString();
@@ -42,7 +43,7 @@ app.get('/',(req, res) => {
   // res.send('<h1>Hello Express!</h1>');
   res.render('home.hbs',{
     pageTitle: 'Home Page',
-    welcomeMessage: "Penny's first ever shiny new website"
+    welcomeMessage: "First webpage"
   });
 });
 
@@ -62,6 +63,6 @@ app.get('/bad', (req, res) => {
 //     errorMessage};
 // }):
 
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 });
