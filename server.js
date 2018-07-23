@@ -47,11 +47,26 @@ app.get('/',(req, res) => {
   });
 });
 
+app.get('/',(req, res) => {
+  // res.send('<h1>Hello Express!</h1>');
+  res.render('projects.hbs',{
+    pageTitle: 'Projects Page',
+    welcomeMessage: "Projects webpage"
+  });
+});
+
 app.get('/about',(req, res) => {
   res.render('about.hbs', {
     pageTitle: 'About Page',
     });
 });
+debugger;
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects Page'
+  });
+});
+
 app.get('/bad', (req, res) => {
   res.send({
     errorMessage: 'Unable to fulfil request'
